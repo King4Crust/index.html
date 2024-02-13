@@ -1,0 +1,123 @@
+echo "# index.html" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/King4Crust/index.html.git
+git push -u origin main
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb; /* Light pink background color */
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        .firework {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://image.flaticon.com/icons/png/512/1348/1348765.png');
+            background-size: cover;
+            animation: fireworks 5s forwards;
+            display: none;
+            opacity: 1; /* Set opacity to fully visible */
+        }
+        @keyframes fireworks {
+            0% { transform: scale(0); opacity: 0; }
+            20% { transform: scale(1); opacity: 1; }
+            80% { transform: scale(5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        #balloons {
+            position: absolute;
+            top: calc(50% - 100px); /* Adjusted top position */
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+        .balloon {
+            display: inline-block;
+            font-size: 100px; /* Smaller balloon size */
+            margin: 0 30px; /* Increased margin */
+            animation: float 5s infinite;
+        }
+        .red {
+            color: red;
+        }
+        #message {
+            position: absolute;
+            top: calc(50% - 50px); /* Adjusted top position */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #333;
+            z-index: 3;
+        }
+        #options {
+            text-align: center;
+        }
+        .option {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            cursor: pointer;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="firework1" class="firework"></div>
+        <div id="firework2" class="firework"></div>
+        <div id="balloons">
+            <span class="balloon red" style="margin-right: 200px;">❤️</span> <!-- Love heart on the left -->
+            <span class="balloon red" style="margin-left: 200px;">❤️</span> <!-- Love heart on the right -->
+        </div>
+        <div id="message">
+            <h1>Will You Be My Valentine?</h1>
+            <p>Dear Henry Hilton Abkin,</p>
+            <p>I love your big head so so much!!<p>
+<p>I want to jar your essence so I can inject it right into my blood stream everyday.<p>
+<p>Will you do me the absolute pleasure of being my Valentine?</p>
+            <div id="options">
+                <div class="option" id="yes1">Yes</div>
+                <div class="option" id="no">No</div> <!-- Added id "no" for the "No" option -->
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.option').forEach(function(option) {
+            option.addEventListener('click', function() { 
+                document.getElementById('firework1').style.display = 'block';
+                document.getElementById('firework2').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('firework1').style.display = 'none';
+                    document.getElementById('firework2').style.display = 'none';
+                }, 5000); // Adjust duration of the animation
+
+                if (option.id === 'yes1') {
+                    alert("You said yes! Can't wait to spend Valentine's Day with You! Now go kiss you gorgeous girlfriend on the lips!");
+                } else if (option.id === 'no') {
+                    alert("You said no you big head bastard?! You better click yes if you know whats good for you *prepares hands to slap* >:(");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
